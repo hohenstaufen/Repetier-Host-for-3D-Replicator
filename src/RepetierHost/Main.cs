@@ -1474,6 +1474,17 @@ namespace RepetierHost
             openLink(Custom.GetString("extraSupportURL", "http://www.repetier.com"));
         }
 
+        private void r3DConfiguration_Click(object sender, EventArgs e)
+        {
+            Replicator3D.Configuration configurationForm = new Replicator3D.Configuration();
+            configurationForm.ShowDialog();
+        }
+
+        private void tsbReplicator3D_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
