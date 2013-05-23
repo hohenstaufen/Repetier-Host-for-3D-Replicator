@@ -113,6 +113,9 @@
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replicator3DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.r3DConfiguration = new System.Windows.Forms.ToolStripMenuItem();
+            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status = new System.Windows.Forms.StatusStrip();
             this.toolConnection = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTempReading = new System.Windows.Forms.ToolStripStatusLabel();
@@ -120,6 +123,20 @@
             this.toolProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.fpsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolConnect = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolLoad = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripSaveJob = new System.Windows.Forms.ToolStripButton();
+            this.toolRunJob = new System.Windows.Forms.ToolStripButton();
+            this.toolKillJob = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSDCard = new System.Windows.Forms.ToolStripButton();
+            this.toolShowLog = new System.Windows.Forms.ToolStripButton();
+            this.toolShowFilament = new System.Windows.Forms.ToolStripButton();
+            this.tsbLogo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripEmergencyButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSupport = new System.Windows.Forms.ToolStripButton();
+            this.toolPrinterSettings = new System.Windows.Forms.ToolStripButton();
+            this.toolShowTravel = new System.Windows.Forms.ToolStripButton();
+            this.tsbReplicator3D = new System.Windows.Forms.ToolStripButton();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.openGCode = new System.Windows.Forms.OpenFileDialog();
             this.saveJobDialog = new System.Windows.Forms.SaveFileDialog();
@@ -132,26 +149,9 @@
             this.tab = new System.Windows.Forms.TabControl();
             this.tabModel = new System.Windows.Forms.TabPage();
             this.tabSlicer = new System.Windows.Forms.TabPage();
+            this.slicerPanel = new RepetierHost.view.SlicerPanel();
             this.tabGCode = new System.Windows.Forms.TabPage();
             this.tabPrint = new System.Windows.Forms.TabPage();
-            this.toolConnect = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolLoad = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripSaveJob = new System.Windows.Forms.ToolStripButton();
-            this.toolRunJob = new System.Windows.Forms.ToolStripButton();
-            this.toolKillJob = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSDCard = new System.Windows.Forms.ToolStripButton();
-            this.toolShowLog = new System.Windows.Forms.ToolStripButton();
-            this.toolShowFilament = new System.Windows.Forms.ToolStripButton();
-            this.toolStripEmergencyButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSupport = new System.Windows.Forms.ToolStripButton();
-            this.toolPrinterSettings = new System.Windows.Forms.ToolStripButton();
-            this.toolShowTravel = new System.Windows.Forms.ToolStripButton();
-            this.replicator3DToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.r3DConfiguration = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbLogo = new System.Windows.Forms.ToolStripButton();
-            this.slicerPanel = new RepetierHost.view.SlicerPanel();
-            this.tsbReplicator3D = new System.Windows.Forms.ToolStripButton();
             this.menu.SuspendLayout();
             this.status.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -840,6 +840,29 @@
             this.supportToolStripMenuItem.Text = "Support";
             this.supportToolStripMenuItem.Click += new System.EventHandler(this.supportToolStripMenuItem_Click);
             // 
+            // replicator3DToolStripMenuItem
+            // 
+            this.replicator3DToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.r3DConfiguration,
+            this.startToolStripMenuItem});
+            this.replicator3DToolStripMenuItem.Name = "replicator3DToolStripMenuItem";
+            this.replicator3DToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.replicator3DToolStripMenuItem.Text = "3D Replicator";
+            // 
+            // r3DConfiguration
+            // 
+            this.r3DConfiguration.Name = "r3DConfiguration";
+            this.r3DConfiguration.Size = new System.Drawing.Size(148, 22);
+            this.r3DConfiguration.Text = "Configuration";
+            this.r3DConfiguration.Click += new System.EventHandler(this.r3DConfiguration_Click);
+            // 
+            // startToolStripMenuItem
+            // 
+            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.startToolStripMenuItem.Text = "Start";
+            this.startToolStripMenuItem.Click += new System.EventHandler(this.tsbReplicator3D_Click);
+            // 
             // status
             // 
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -917,6 +940,162 @@
             this.toolStrip.Size = new System.Drawing.Size(1173, 54);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
+            // 
+            // toolConnect
+            // 
+            this.toolConnect.Image = ((System.Drawing.Image)(resources.GetObject("toolConnect.Image")));
+            this.toolConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolConnect.Name = "toolConnect";
+            this.toolConnect.Size = new System.Drawing.Size(68, 51);
+            this.toolConnect.Text = "Connect";
+            this.toolConnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolConnect.ToolTipText = "Connect printer";
+            this.toolConnect.ButtonClick += new System.EventHandler(this.toolConnect_Click);
+            // 
+            // toolLoad
+            // 
+            this.toolLoad.Image = ((System.Drawing.Image)(resources.GetObject("toolLoad.Image")));
+            this.toolLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolLoad.Name = "toolLoad";
+            this.toolLoad.Size = new System.Drawing.Size(49, 51);
+            this.toolLoad.Text = "Load";
+            this.toolLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolLoad.ToolTipText = "Load file";
+            this.toolLoad.ButtonClick += new System.EventHandler(this.toolGCodeLoad_Click);
+            // 
+            // toolStripSaveJob
+            // 
+            this.toolStripSaveJob.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSaveJob.Image")));
+            this.toolStripSaveJob.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSaveJob.Name = "toolStripSaveJob";
+            this.toolStripSaveJob.Size = new System.Drawing.Size(55, 51);
+            this.toolStripSaveJob.Text = "Save job";
+            this.toolStripSaveJob.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripSaveJob.Click += new System.EventHandler(this.toolStripSaveJob_Click);
+            // 
+            // toolRunJob
+            // 
+            this.toolRunJob.Image = ((System.Drawing.Image)(resources.GetObject("toolRunJob.Image")));
+            this.toolRunJob.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolRunJob.Name = "toolRunJob";
+            this.toolRunJob.Size = new System.Drawing.Size(52, 51);
+            this.toolRunJob.Text = "Run job";
+            this.toolRunJob.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolRunJob.Click += new System.EventHandler(this.toolPrintJob_Click);
+            // 
+            // toolKillJob
+            // 
+            this.toolKillJob.Enabled = false;
+            this.toolKillJob.Image = ((System.Drawing.Image)(resources.GetObject("toolKillJob.Image")));
+            this.toolKillJob.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolKillJob.Name = "toolKillJob";
+            this.toolKillJob.Size = new System.Drawing.Size(47, 51);
+            this.toolKillJob.Text = "Kill job";
+            this.toolKillJob.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolKillJob.Click += new System.EventHandler(this.toolKillJob_Click);
+            // 
+            // toolStripSDCard
+            // 
+            this.toolStripSDCard.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSDCard.Image")));
+            this.toolStripSDCard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSDCard.Name = "toolStripSDCard";
+            this.toolStripSDCard.Size = new System.Drawing.Size(51, 51);
+            this.toolStripSDCard.Text = "SD card";
+            this.toolStripSDCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripSDCard.ToolTipText = "SDCard management";
+            this.toolStripSDCard.Click += new System.EventHandler(this.toolStripSDCard_Click);
+            // 
+            // toolShowLog
+            // 
+            this.toolShowLog.Image = ((System.Drawing.Image)(resources.GetObject("toolShowLog.Image")));
+            this.toolShowLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolShowLog.Name = "toolShowLog";
+            this.toolShowLog.Size = new System.Drawing.Size(68, 51);
+            this.toolShowLog.Text = "Toggle log";
+            this.toolShowLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolShowLog.ToolTipText = "Hide log";
+            this.toolShowLog.Click += new System.EventHandler(this.toolShowLog_Click);
+            // 
+            // toolShowFilament
+            // 
+            this.toolShowFilament.Image = ((System.Drawing.Image)(resources.GetObject("toolShowFilament.Image")));
+            this.toolShowFilament.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolShowFilament.Name = "toolShowFilament";
+            this.toolShowFilament.Size = new System.Drawing.Size(87, 51);
+            this.toolShowFilament.Text = "Show filament";
+            this.toolShowFilament.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolShowFilament.Click += new System.EventHandler(this.toolShowFilament_Click);
+            // 
+            // tsbLogo
+            // 
+            this.tsbLogo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbLogo.AutoSize = false;
+            this.tsbLogo.BackgroundImage = global::RepetierHost.Properties.Resources.logo;
+            this.tsbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tsbLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbLogo.Enabled = false;
+            this.tsbLogo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLogo.Name = "tsbLogo";
+            this.tsbLogo.Size = new System.Drawing.Size(200, 51);
+            // 
+            // toolStripEmergencyButton
+            // 
+            this.toolStripEmergencyButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripEmergencyButton.AutoToolTip = false;
+            this.toolStripEmergencyButton.BackColor = System.Drawing.Color.White;
+            this.toolStripEmergencyButton.Enabled = false;
+            this.toolStripEmergencyButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripEmergencyButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripEmergencyButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripEmergencyButton.Image")));
+            this.toolStripEmergencyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripEmergencyButton.Name = "toolStripEmergencyButton";
+            this.toolStripEmergencyButton.Size = new System.Drawing.Size(96, 51);
+            this.toolStripEmergencyButton.Text = "Emergency stop";
+            this.toolStripEmergencyButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripEmergencyButton.Click += new System.EventHandler(this.toolStripEmergencyButton_Click);
+            // 
+            // toolStripButtonSupport
+            // 
+            this.toolStripButtonSupport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonSupport.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSupport.Image")));
+            this.toolStripButtonSupport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSupport.Name = "toolStripButtonSupport";
+            this.toolStripButtonSupport.Size = new System.Drawing.Size(53, 51);
+            this.toolStripButtonSupport.Text = "Support";
+            this.toolStripButtonSupport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButtonSupport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonSupport.Click += new System.EventHandler(this.supportToolStripMenuItem_Click);
+            // 
+            // toolPrinterSettings
+            // 
+            this.toolPrinterSettings.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolPrinterSettings.Image = ((System.Drawing.Image)(resources.GetObject("toolPrinterSettings.Image")));
+            this.toolPrinterSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolPrinterSettings.Name = "toolPrinterSettings";
+            this.toolPrinterSettings.Size = new System.Drawing.Size(90, 51);
+            this.toolPrinterSettings.Text = "Printer settings";
+            this.toolPrinterSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolPrinterSettings.Click += new System.EventHandler(this.printerSettingsToolStripMenuItem_Click);
+            // 
+            // toolShowTravel
+            // 
+            this.toolShowTravel.Image = ((System.Drawing.Image)(resources.GetObject("toolShowTravel.Image")));
+            this.toolShowTravel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolShowTravel.Name = "toolShowTravel";
+            this.toolShowTravel.Size = new System.Drawing.Size(72, 51);
+            this.toolShowTravel.Text = "ShowTravel";
+            this.toolShowTravel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolShowTravel.Click += new System.EventHandler(this.toolShowTravel_Click);
+            // 
+            // tsbReplicator3D
+            // 
+            this.tsbReplicator3D.Image = ((System.Drawing.Image)(resources.GetObject("tsbReplicator3D.Image")));
+            this.tsbReplicator3D.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbReplicator3D.Name = "tsbReplicator3D";
+            this.tsbReplicator3D.Size = new System.Drawing.Size(108, 51);
+            this.tsbReplicator3D.Text = "Start 3D Replicator";
+            this.tsbReplicator3D.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbReplicator3D.Click += new System.EventHandler(this.tsbReplicator3D_Click);
             // 
             // imageList
             // 
@@ -1008,7 +1187,7 @@
             this.tabPageTemp.Location = new System.Drawing.Point(4, 22);
             this.tabPageTemp.Name = "tabPageTemp";
             this.tabPageTemp.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTemp.Size = new System.Drawing.Size(529, 304);
+            this.tabPageTemp.Size = new System.Drawing.Size(684, 334);
             this.tabPageTemp.TabIndex = 1;
             this.tabPageTemp.Text = "Temperature Curve";
             this.tabPageTemp.UseVisualStyleBackColor = true;
@@ -1042,10 +1221,19 @@
             this.tabSlicer.Controls.Add(this.slicerPanel);
             this.tabSlicer.Location = new System.Drawing.Point(4, 22);
             this.tabSlicer.Name = "tabSlicer";
-            this.tabSlicer.Size = new System.Drawing.Size(467, 304);
+            this.tabSlicer.Size = new System.Drawing.Size(467, 334);
             this.tabSlicer.TabIndex = 3;
             this.tabSlicer.Text = "Slicer";
             this.tabSlicer.UseVisualStyleBackColor = true;
+            // 
+            // slicerPanel
+            // 
+            this.slicerPanel.AutoScroll = true;
+            this.slicerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.slicerPanel.Location = new System.Drawing.Point(0, 0);
+            this.slicerPanel.Name = "slicerPanel";
+            this.slicerPanel.Size = new System.Drawing.Size(467, 334);
+            this.slicerPanel.TabIndex = 0;
             // 
             // tabGCode
             // 
@@ -1054,7 +1242,7 @@
             this.tabGCode.Location = new System.Drawing.Point(4, 22);
             this.tabGCode.Name = "tabGCode";
             this.tabGCode.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGCode.Size = new System.Drawing.Size(467, 304);
+            this.tabGCode.Size = new System.Drawing.Size(467, 334);
             this.tabGCode.TabIndex = 1;
             this.tabGCode.Text = "G-Code editor";
             this.tabGCode.UseVisualStyleBackColor = true;
@@ -1065,198 +1253,10 @@
             this.tabPrint.Location = new System.Drawing.Point(4, 22);
             this.tabPrint.Name = "tabPrint";
             this.tabPrint.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPrint.Size = new System.Drawing.Size(467, 304);
+            this.tabPrint.Size = new System.Drawing.Size(467, 334);
             this.tabPrint.TabIndex = 0;
             this.tabPrint.Text = "Manual control";
             this.tabPrint.UseVisualStyleBackColor = true;
-            // 
-            // toolConnect
-            // 
-            this.toolConnect.Image = ((System.Drawing.Image)(resources.GetObject("toolConnect.Image")));
-            this.toolConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolConnect.Name = "toolConnect";
-            this.toolConnect.Size = new System.Drawing.Size(68, 51);
-            this.toolConnect.Text = "Connect";
-            this.toolConnect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolConnect.ToolTipText = "Connect printer";
-            this.toolConnect.ButtonClick += new System.EventHandler(this.toolConnect_Click);
-            // 
-            // toolLoad
-            // 
-            this.toolLoad.Image = ((System.Drawing.Image)(resources.GetObject("toolLoad.Image")));
-            this.toolLoad.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolLoad.Name = "toolLoad";
-            this.toolLoad.Size = new System.Drawing.Size(49, 51);
-            this.toolLoad.Text = "Load";
-            this.toolLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolLoad.ToolTipText = "Load file";
-            this.toolLoad.ButtonClick += new System.EventHandler(this.toolGCodeLoad_Click);
-            // 
-            // toolStripSaveJob
-            // 
-            this.toolStripSaveJob.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSaveJob.Image")));
-            this.toolStripSaveJob.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSaveJob.Name = "toolStripSaveJob";
-            this.toolStripSaveJob.Size = new System.Drawing.Size(55, 51);
-            this.toolStripSaveJob.Text = "Save job";
-            this.toolStripSaveJob.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripSaveJob.Click += new System.EventHandler(this.toolStripSaveJob_Click);
-            // 
-            // toolRunJob
-            // 
-            this.toolRunJob.Image = ((System.Drawing.Image)(resources.GetObject("toolRunJob.Image")));
-            this.toolRunJob.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolRunJob.Name = "toolRunJob";
-            this.toolRunJob.Size = new System.Drawing.Size(52, 51);
-            this.toolRunJob.Text = "Run job";
-            this.toolRunJob.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolRunJob.Click += new System.EventHandler(this.toolPrintJob_Click);
-            // 
-            // toolKillJob
-            // 
-            this.toolKillJob.Enabled = false;
-            this.toolKillJob.Image = ((System.Drawing.Image)(resources.GetObject("toolKillJob.Image")));
-            this.toolKillJob.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolKillJob.Name = "toolKillJob";
-            this.toolKillJob.Size = new System.Drawing.Size(47, 51);
-            this.toolKillJob.Text = "Kill job";
-            this.toolKillJob.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolKillJob.Click += new System.EventHandler(this.toolKillJob_Click);
-            // 
-            // toolStripSDCard
-            // 
-            this.toolStripSDCard.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSDCard.Image")));
-            this.toolStripSDCard.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSDCard.Name = "toolStripSDCard";
-            this.toolStripSDCard.Size = new System.Drawing.Size(51, 51);
-            this.toolStripSDCard.Text = "SD card";
-            this.toolStripSDCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripSDCard.ToolTipText = "SDCard management";
-            this.toolStripSDCard.Click += new System.EventHandler(this.toolStripSDCard_Click);
-            // 
-            // toolShowLog
-            // 
-            this.toolShowLog.Image = ((System.Drawing.Image)(resources.GetObject("toolShowLog.Image")));
-            this.toolShowLog.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolShowLog.Name = "toolShowLog";
-            this.toolShowLog.Size = new System.Drawing.Size(68, 51);
-            this.toolShowLog.Text = "Toggle log";
-            this.toolShowLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolShowLog.ToolTipText = "Hide log";
-            this.toolShowLog.Click += new System.EventHandler(this.toolShowLog_Click);
-            // 
-            // toolShowFilament
-            // 
-            this.toolShowFilament.Image = ((System.Drawing.Image)(resources.GetObject("toolShowFilament.Image")));
-            this.toolShowFilament.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolShowFilament.Name = "toolShowFilament";
-            this.toolShowFilament.Size = new System.Drawing.Size(87, 51);
-            this.toolShowFilament.Text = "Show filament";
-            this.toolShowFilament.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolShowFilament.Click += new System.EventHandler(this.toolShowFilament_Click);
-            // 
-            // toolStripEmergencyButton
-            // 
-            this.toolStripEmergencyButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripEmergencyButton.AutoToolTip = false;
-            this.toolStripEmergencyButton.BackColor = System.Drawing.Color.White;
-            this.toolStripEmergencyButton.Enabled = false;
-            this.toolStripEmergencyButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripEmergencyButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripEmergencyButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripEmergencyButton.Image")));
-            this.toolStripEmergencyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripEmergencyButton.Name = "toolStripEmergencyButton";
-            this.toolStripEmergencyButton.Size = new System.Drawing.Size(96, 51);
-            this.toolStripEmergencyButton.Text = "Emergency stop";
-            this.toolStripEmergencyButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripEmergencyButton.Click += new System.EventHandler(this.toolStripEmergencyButton_Click);
-            // 
-            // toolStripButtonSupport
-            // 
-            this.toolStripButtonSupport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonSupport.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSupport.Image")));
-            this.toolStripButtonSupport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSupport.Name = "toolStripButtonSupport";
-            this.toolStripButtonSupport.Size = new System.Drawing.Size(53, 51);
-            this.toolStripButtonSupport.Text = "Support";
-            this.toolStripButtonSupport.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButtonSupport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonSupport.Click += new System.EventHandler(this.supportToolStripMenuItem_Click);
-            // 
-            // toolPrinterSettings
-            // 
-            this.toolPrinterSettings.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolPrinterSettings.Image = ((System.Drawing.Image)(resources.GetObject("toolPrinterSettings.Image")));
-            this.toolPrinterSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolPrinterSettings.Name = "toolPrinterSettings";
-            this.toolPrinterSettings.Size = new System.Drawing.Size(90, 51);
-            this.toolPrinterSettings.Text = "Printer settings";
-            this.toolPrinterSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolPrinterSettings.Click += new System.EventHandler(this.printerSettingsToolStripMenuItem_Click);
-            // 
-            // toolShowTravel
-            // 
-            this.toolShowTravel.Image = ((System.Drawing.Image)(resources.GetObject("toolShowTravel.Image")));
-            this.toolShowTravel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolShowTravel.Name = "toolShowTravel";
-            this.toolShowTravel.Size = new System.Drawing.Size(72, 51);
-            this.toolShowTravel.Text = "ShowTravel";
-            this.toolShowTravel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolShowTravel.Click += new System.EventHandler(this.toolShowTravel_Click);
-            // 
-            // replicator3DToolStripMenuItem
-            // 
-            this.replicator3DToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.r3DConfiguration,
-            this.startToolStripMenuItem});
-            this.replicator3DToolStripMenuItem.Name = "replicator3DToolStripMenuItem";
-            this.replicator3DToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.replicator3DToolStripMenuItem.Text = "3D Replicator";
-            // 
-            // r3DConfiguration
-            // 
-            this.r3DConfiguration.Name = "r3DConfiguration";
-            this.r3DConfiguration.Size = new System.Drawing.Size(152, 22);
-            this.r3DConfiguration.Text = "Configuration";
-            this.r3DConfiguration.Click += new System.EventHandler(this.r3DConfiguration_Click);
-            // 
-            // startToolStripMenuItem
-            // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.startToolStripMenuItem.Text = "Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.tsbReplicator3D_Click);
-            // 
-            // tsbLogo
-            // 
-            this.tsbLogo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbLogo.AutoSize = false;
-            this.tsbLogo.BackgroundImage = global::RepetierHost.Properties.Resources.logo;
-            this.tsbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tsbLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbLogo.Enabled = false;
-            this.tsbLogo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbLogo.Name = "tsbLogo";
-            this.tsbLogo.Size = new System.Drawing.Size(200, 51);
-            // 
-            // slicerPanel
-            // 
-            this.slicerPanel.AutoScroll = true;
-            this.slicerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.slicerPanel.Location = new System.Drawing.Point(0, 0);
-            this.slicerPanel.Name = "slicerPanel";
-            this.slicerPanel.Size = new System.Drawing.Size(467, 304);
-            this.slicerPanel.TabIndex = 0;
-            // 
-            // tsbReplicator3D
-            // 
-            this.tsbReplicator3D.Image = ((System.Drawing.Image)(resources.GetObject("tsbReplicator3D.Image")));
-            this.tsbReplicator3D.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbReplicator3D.Name = "tsbReplicator3D";
-            this.tsbReplicator3D.Size = new System.Drawing.Size(108, 51);
-            this.tsbReplicator3D.Text = "Start 3D Replicator";
-            this.tsbReplicator3D.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbReplicator3D.Click += new System.EventHandler(this.tsbReplicator3D_Click);
             // 
             // Main
             // 

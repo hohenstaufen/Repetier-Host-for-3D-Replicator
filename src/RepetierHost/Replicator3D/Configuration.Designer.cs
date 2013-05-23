@@ -44,6 +44,7 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.pbMarconi = new System.Windows.Forms.PictureBox();
             this.ofdConfiguration = new System.Windows.Forms.OpenFileDialog();
+            this.fbdConfiguration = new System.Windows.Forms.FolderBrowserDialog();
             this.gbExec.SuspendLayout();
             this.gbOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMarconi)).BeginInit();
@@ -182,6 +183,7 @@
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -191,6 +193,7 @@
             this.btnOK.TabIndex = 9;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // pbMarconi
             // 
@@ -248,5 +251,6 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.PictureBox pbMarconi;
         private System.Windows.Forms.OpenFileDialog ofdConfiguration;
+        private System.Windows.Forms.FolderBrowserDialog fbdConfiguration;
     }
 }

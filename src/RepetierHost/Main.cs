@@ -29,6 +29,7 @@ using RepetierHost.view.utils;
 using Microsoft.Win32;
 using System.Threading;
 using System.Diagnostics;
+using System.Diagnostics.Eventing;
 
 namespace RepetierHost
 {
@@ -1480,11 +1481,61 @@ namespace RepetierHost
             configurationForm.ShowDialog();
         }
 
+        #region 3DReplicator
+
+        Replicator3D.Settings settings = new Replicator3D.Settings();
+
         private void tsbReplicator3D_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(settings.Directory))
+            {
+                MessageBox.Show("No directory chosen for monitoring. Automatic file loading disabled.");
+            }
+            if (!string.IsNullOrEmpty(settings.DAVIDLaserscanner))
+            {
+                Process p = new Process();
+                ProcessStartInfo psi = new ProcessStartInfo(settings.DAVIDLaserscanner);
+                p.StartInfo = psi;
+                p.EnableRaisingEvents = true;
+                p.SynchronizingObject = this;
+                p.Exited += p_Exited;
+                p.Start();
+            }
+            else
+            {
+                MessageBox.Show("DAVID Laserscanner executable not selected. DAVID Laserscanner will not start.");
+            }
+            if (!string.IsNullOrEmpty(settings.Processing))
+            {
+                Process.Start(settings.Processing);
+            }
+            else
+            {
+                MessageBox.Show("Processing executable not selected. Processing will not start.");
+            }
         }
 
+        void p_Exited(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(settings.Directory))
+            { 
+                var filteredFiles = Directory.GetFiles(settings.Directory).Where(file => file.ToLower().EndsWith("stl")).ToList<string>();
+                DateTime newest = DateTime.MinValue;
+                string newestFileName = string.Empty;
+                foreach (string fileName in filteredFiles)
+                {
+                    DateTime lastWrite = File.GetLastWriteTime(fileName);
+                    if (lastWrite > newest)
+                    {
+                        newest = lastWrite;
+                        newestFileName = fileName;
+                    }
+                }
+                if (!string.IsNullOrEmpty(newestFileName)) { LoadGCodeOrSTL(newestFileName); }
+            }
+        }
+       
+        #endregion
 
     }
 }

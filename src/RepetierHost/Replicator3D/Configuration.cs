@@ -27,20 +27,31 @@ namespace RepetierHost.Replicator3D
             {
                 lblDLSExe.Text = NO_FILE;
             }
+            else
+            {
+                lblDLSExe.Text = settings.DAVIDLaserscanner;
+            }
             if (string.IsNullOrEmpty(settings.Processing))
             {
                 lblPExe.Text = NO_FILE;
+            }
+            else
+            {
+                lblPExe.Text = settings.Processing;
             }
             if (string.IsNullOrEmpty(settings.Directory))
             {
                 lblDirectoryS.Text = NO_DIR;
             }
+            else
+            {
+                lblDirectoryS.Text = settings.Directory;
+            }
         }
 
         private void btnDLS_Click(object sender, EventArgs e)
         {
-            ofdConfiguration.ShowDialog();
-            if (!string.IsNullOrEmpty(ofdConfiguration.FileName))
+            if (ofdConfiguration.ShowDialog() == DialogResult.OK)
             {
                 settings.DAVIDLaserscanner = ofdConfiguration.FileName;
                 lblDLSExe.Text = ofdConfiguration.FileName;
@@ -50,13 +61,11 @@ namespace RepetierHost.Replicator3D
                 settings.DAVIDLaserscanner = string.Empty;
                 lblDLSExe.Text = NO_FILE;
             }
-            settings.Save();
         }
 
         private void btnP_Click(object sender, EventArgs e)
         {
-            ofdConfiguration.ShowDialog();
-            if (!string.IsNullOrEmpty(ofdConfiguration.FileName))
+            if (ofdConfiguration.ShowDialog() == DialogResult.OK)
             {
                 settings.Processing = ofdConfiguration.FileName;
                 lblPExe.Text = ofdConfiguration.FileName;
@@ -66,23 +75,31 @@ namespace RepetierHost.Replicator3D
                 settings.Processing = string.Empty;
                 lblPExe.Text = NO_FILE;
             }
-            settings.Save();
         }
 
         private void btnDirectory_Click(object sender, EventArgs e)
         {
-            ofdConfiguration.ShowDialog();
-            if (!string.IsNullOrEmpty(ofdConfiguration.FileName))
+            if (fbdConfiguration.ShowDialog() == DialogResult.OK)
             {
-                settings.Directory = ofdConfiguration.FileName;
-                lblDirectoryS.Text = ofdConfiguration.FileName;
+                settings.Directory = fbdConfiguration.SelectedPath;
+                lblDirectoryS.Text = fbdConfiguration.SelectedPath;
             }
             else
             {
                 settings.Directory = string.Empty;
                 lblDirectoryS.Text = NO_DIR;
             }
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
             settings.Save();
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
